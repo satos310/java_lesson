@@ -6,7 +6,12 @@ public class myapp {
   */
   
   public static void main(String[] args) {
-    System.out.println("Hello World");
+    // 変数
+    // 型 変数名
+    String msg;
+    msg = "Hello World Again!";
+    
+    System.out.println(msg);
   }
   
 }

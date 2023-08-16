@@ -29,6 +29,30 @@ public class myapp {
     msg = "Hello Wo\nrld Again\t!";
     
     System.out.println(msg);
+    
+    // 演算
+    // + - * / %
+    // ++ --
+    int i;
+    i = 10 / 3;
+    System.out.println(i);  // 3
+    i = 10 % 3;
+    System.out.println(i);  // 1
+    
+    int p = 5;
+    p++;
+    System.out.println(p);  // 6
+    p--;
+    System.out.println(p); // 5
+    
+    int q = 5;
+    q = q + 12;   // 1.
+    q += 12;      // 2.   1.と2.は同じ意味
+    System.out.println(q);
+    
+    String s;
+    s = "hello " + "world";
+    System.out.println(s);
   }
   
 }

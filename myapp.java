@@ -60,8 +60,23 @@ public class myapp {
     System.out.println(k);  // (int)をつけない → エラーメッセージ「精度が失われる」と出力される。
     
     int l = 10;
-    double m = l / 4;       // 
-    System.out.println(m);
+    double m = (double)l / 4;       // lの手前に(double)つける → 2.5
+    System.out.println(m);          // lの手前に(double)つけない → 2.0　mはdoubleだが、計算式内のlはintのため、小数点以下が切り捨て計算される
+    
+    // if文
+    // > >= < <= == !=
+    // && || !
+    int score = 95;
+    if (score > 80) {
+      System.out.println("Great!");
+    } else if(score > 60) {
+      System.out.println("Good!");
+    } else {
+      System.out.println("so so ... !");
+    }
+    
+    String rslt = score > 80 ? "Great!" : "so so ... !";    // 分岐が2つのときは ? : を使用することでif, elseのような意味になる（3つ以上もいけるが可読性が）
+    System.out.println(rslt);
   }
   
 }

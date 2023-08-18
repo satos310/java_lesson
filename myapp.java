@@ -75,8 +75,26 @@ public class myapp {
       System.out.println("so so ... !");
     }
     
-    String rslt = score > 80 ? "Great!" : "so so ... !";    // 分岐が2つのときは ? : を使用することでif, elseのような意味になる（3つ以上もいけるが可読性が）
+    String rslt = score > 80 ? "Great!" : "so so ... !";    // (条件式) ? (true のときの値) : (false のときの値)    // 三項演算子という。
     System.out.println(rslt);
+    
+    // switch文による条件分岐
+    String signal = "green";
+    switch (signal) {
+      case "red":
+        System.out.println("stop!");
+        break;      // switch文と「break」はセット！　忘れずに記述する
+      case "yellow":
+        System.out.println("caution!!");
+        break;
+      case "blue":
+      case "green":
+        System.out.println("GO!");
+        break;
+      default:
+        System.out.println("wrong signal!!");
+        break;
+    }
   }
   
 }

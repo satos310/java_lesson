@@ -1,11 +1,14 @@
 public class myapp {
   
-  // 
+  //　単行
   /*
-    comment out
+    comment out　複数行
   */
   
   public static void main(String[] args) {
+    System.out.println(55_555_555);     // 出力させる際に数字の羅列のみの場合、「_」は省略される（メリット：可読性向上）
+    System.out.println(1.2e3);      // 数値の後に「e3」と記述 → 10の3乗するという意味　　　1.2 × 1000 == 1200
+    
     // 変数
     // 型 変数名
     
@@ -94,6 +97,14 @@ public class myapp {
       default:
         System.out.println("wrong signal!!");
         break;
+    }
+    
+    // while文で繰り返し処理
+    //0 - 9
+    int n = 0;
+    while (n < 10) {
+      System.out.println(n);
+      n++;      // ++や--を単項演算子と呼ぶ
     }
   }
   

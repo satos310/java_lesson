@@ -26,12 +26,15 @@ public class myapp {
     boolean flag = true;    // boolean → trueかfalseがくる
     
     // 文字列 → String
-    // \n → 改行
-    // \t → タブ
     String msg;
-    msg = "Hello Wo\nrld Again\t!";
-    
+    msg = "Hello Wo\nrld Again\t!";     // \n → 改行  \t → タブ
     System.out.println(msg);
+    System.out.println("Taro said hi. \"hi\", he replied.");      // 文字列に "" を使用したい場合は、手前に \ を置くことで認識させられる
+    
+    // 文字列と変数の組み合わせ
+    String fname = "Taro";
+    String lname = "Yamada";
+    System.out.println(String.format("I am %s %s.", fname, lname));     // 文字列をString.formatで囲む　→　文字列を埋め込みたい箇所を%sとする　→　文字列の""の直後に , 区切りで変数を入力
     
     // 演算
     // + - * / %

@@ -49,17 +49,32 @@ public class myapp {
     System.out.println(g);  // 5
     
     int h = 5;
-    h = h + 12;   // 1.
+    // h = h + 12;   // 1.
     h += 12;      // 2.   1.と2.は同じ意味
+    // h -= 12       // 引き算ver.
     System.out.println(h);
     
+    // 変数を使って計算
+    int price = 150;
+    final double RATE = 1.1;      // finaleという定数をつけると、値の再代入ができなくなる。　　また、定数名はわかりやすいように大文字にする。
+    System.out.println(price * 120 * RATE);
+    System.out.println(price * 130 * RATE);
+    System.out.println(price * 140 * RATE);
+    
+    price ++;
+    // RATE = 1.08;     // RATEという定数に再代入しようとしてもエラーが起きる。
+    System.out.println(price * 120 * RATE);
+    System.out.println(price * 130 * RATE);
+    System.out.println(price * 140 * RATE);
+    
+    // 文字の足し算も可
     String i;
     i = "hello " + "world";
     System.out.println(i);
     
     // データ型の変換（キャスト）
     double j = 52343.231;
-    int k = (int)j;         // jの値を変換後の値にするために、()でデータ型を囲む
+    int k = (int)j;         // jの値を変換後の値にするために、()でデータ型を囲む。
     System.out.println(k);  // (int)をつけない → エラーメッセージ「精度が失われる」と出力される。
     
     int l = 10;

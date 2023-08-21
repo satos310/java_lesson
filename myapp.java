@@ -133,5 +133,14 @@ public class myapp {
     scores[1] = 100;
     System.out.println(scores[1]);
     System.out.println(scores.length);      // 配列の要素数を調べたいときは変数の後に.lengthをつける
+    
+    // 配列の中に整数が入ったものを管理
+    // int[] firstYearScores = {70, 90, 80};
+    // int[] secondYearScores = {30, 40, 50};
+    int[][] scores2 = {
+      {70, 90, 80},   // scores2[0]
+      {30, 40, 50}    // scores2[1]
+    };
+    System.out.println(scores2[1][2]);    // 0{ 1{}, 2{} }の配列の中で1{}の中身の、{0, 1, 2}の2（今回でいう50）を選択している
   }
 }

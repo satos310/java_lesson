@@ -124,6 +124,14 @@ public class myapp {
       System.out.println(n);
       n++;      // ++や--を単項演算子と呼ぶ
     }
+    
+    // 配列の要素
+    int[] scores = {70, 80, 90};
+    System.out.println(scores[0]);
+    System.out.println(scores[1]);
+    System.out.println(scores[2]);
+    scores[1] = 100;
+    System.out.println(scores[1]);
+    System.out.println(scores.length);      // 配列の要素数を調べたいときは変数の後に.lengthをつける
   }
-  
 }

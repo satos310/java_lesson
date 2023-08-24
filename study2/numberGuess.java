@@ -13,15 +13,17 @@ public class numberGuess {
   //   System.out.println("hello " + name + " again!");
   
     Integer answer = new Random().nextInt(10) + 1;      // nextInt(10) → 0～9までのランダムな数値がanswerに代入される → +1して0～10の数値が入る
+    Integer count = 0;
     
-    while (true) {
+    while (true) {      // (true)とすることで、ずっと処理を繰返す　→　break;で処理終了
       // Q. intとIntegerに違いはあるか？
       System.out.print("Your guess? ");
       int guess = new Scanner(System.in).nextInt();     // 整数値を受け取る際はnextInt
       // System.out.println("Your guess: " + guess);
+      count++;
       
       if (answer == guess) {
-        System.out.println("Bingo!");
+        System.out.println("Bingo! it took " + count + " guesses!");
         break;
       } else if (answer > guess) {
         System.out.println("The answer is higher!");

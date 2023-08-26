@@ -151,5 +151,21 @@ public class myapp {
     System.out.println(points[1]);    // 100
     System.out.println(pointsBackup[1]);    // 90?→100になる  why...参照型のため、元の変数pointsの値が変わるとpointsBackup内も変わる
     // 参照型の変数を他の変数に代入しても、値そのものをコピーするわけではない
+    
+    // while ループ処理
+    // 0 - 9
+    int o = 0;
+    // while(o < 10) {
+    //   System.out.println(o);
+    //   o++;      // 単項演算子
+    // }
+    
+    // do while　while文と同じ動作をする
+    do {
+      System.out.println(o);
+      o++;      // 単項演算子
+    } while(o < 10);      // 条件判定が後に来る → 順番として「表示→条件判定」のため、int 0の値が100でも1度は100と表示される
+    
+    
   }
 }

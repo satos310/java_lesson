@@ -194,9 +194,20 @@ public class myapp {
     // 上記の1. 2. 3.は全て同じ処理を行っている　3.は1行でまとまるのでシンプル
     
     System.out.println(sales[1]);
-    
     sales[1] = 1000;
-    
     System.out.println(sales[1]);
+    
+    // 配列の要素の操作
+    // 配列のすべての要素に対して何らかの処理をしたい
+    int[] sales2 = {700, 400, 500};
+    
+    // for (int q = 0; q < 3; q++) {
+    // for (int q = 0; q < sales2.length; q++) {     // 配列の変数名.lengthとすることで、配列の個数を取得できる
+    //   System.out.println(sales2[q]);
+    // }
+    
+    for (int sale : sales2) {       // sales2の配列の中から１つずつ取り出してint型のsaleに代入する
+      System.out.println(sale);      // 上記の要素が終わるまで出力処理を実行する
+    }
   }
 }

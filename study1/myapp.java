@@ -176,8 +176,27 @@ public class myapp {
         continue;     // p=5のを抜かして次の処理(6)を表示させる
       }
       System.out.println(p);
-      
     }
     
+    // 配列
+    // 要素は全て0から始まる
+    
+    // int[] sales;     // 1. 2.
+    
+    // sales = new int[3];      // 1.   配列のデータ領域の確保をしている
+    // sales[0] = 100;
+    // sales[1] = 200;
+    // sales[2] = 300;
+    
+    // sales = new int[] {100, 200, 300};     // 2.
+    
+    int[] sales = {100, 200, 300};        // 3.
+    // 上記の1. 2. 3.は全て同じ処理を行っている　3.は1行でまとまるのでシンプル
+    
+    System.out.println(sales[1]);
+    
+    sales[1] = 1000;
+    
+    System.out.println(sales[1]);
   }
 }

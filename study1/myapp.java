@@ -209,5 +209,28 @@ public class myapp {
     for (int sale : sales2) {       // sales2の配列の中から１つずつ取り出してint型のsaleに代入する
       System.out.println(sale);      // 上記の要素が終わるまで出力処理を実行する
     }
+    
+    // 基本データ型と参照データ型の違い
+    
+    // 基本データ型
+    // int r = 10;
+    // int s = r;
+    // s = 5;
+    // System.out.println(r);     // 10
+    // System.out.println(s);     // 5
+    
+    // 参照型
+    int[] r = {3, 5, 7};
+    int[] s = r;
+    s[1] = 8;
+    System.out.println(r[1]);     // 8
+    System.out.println(s[1]);     // 8　両方同じ値（why...引き出す値のメモリ領域の番地が同じ）
+    
+    // 参照型2  String
+    String t = "hello";
+    String u = t;
+    u = "world";
+    System.out.println(t);      // hello
+    System.out.println(u);      // world    参照型と同じような動作（but...文字列は変更不可）
   }
 }

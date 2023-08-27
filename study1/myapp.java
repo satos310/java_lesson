@@ -232,5 +232,27 @@ public class myapp {
     u = "world";
     System.out.println(t);      // hello
     System.out.println(u);      // world    参照型と同じような動作（but...文字列は変更不可）
+    
+    // メソッド
+    // sayHi();      // 下のメソッドの処理内容を呼び出している
+    // sayHi("Tom");     // 実行時にオプションの値を渡すことができる
+    // sayHi("Bob");     // 受け取る値は()の中で受け取れる
+    String msg2 = sayHi("Steve");
+    System.out.println(msg2);
   }
+    // メソッド
+  // public static void sayHi(String name) {     // ここでsayHi()内に変数を宣言 → 上の記述で呼び出す時にsayHi()と記述すれば、任意の値を渡せる
+    // System.out.println("Hi!");
+    // System.out.println("Hi! " + name);
+  
+  // メソッドの値を返してもらいたい時 → 「return 返したい値」
+  public static String sayHi(String name) {     //  メソッドが値を返す時は、メソッド名の前に返すデータ型を書く必要有（※void → 「何も返さない」）
+    return "Hi! " + name;     // 引数　個数や方が違えば、同じ名前でいくつでも作ることができる（メソッドのオーバーロード）
+  }
+  
+  // orverload
+  // public static void sayHi() {
+  //   System.out.println("Hi! Nobody!");
+  // }
+  
 }

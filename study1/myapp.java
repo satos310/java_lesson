@@ -239,6 +239,13 @@ public class myapp {
     // sayHi("Bob");     // 受け取る値は()の中で受け取れる
     String msg2 = sayHi("Steve");
     System.out.println(msg2);
+    
+    // class
+    User tom;
+    // tom = new User("Tom");     // newで新しい番地確保→ 「インスタンス化」, この状況ではtomのことを「インスタンス」と呼ぶ
+    tom = new User();     // 引数なしで呼ぶ　→　Me!が入る
+    System.out.println(tom.name);
+    tom.sayHi();
   }
     // メソッド
   // public static void sayHi(String name) {     // ここでsayHi()内に変数を宣言 → 上の記述で呼び出す時にsayHi()と記述すれば、任意の値を渡せる
@@ -254,5 +261,25 @@ public class myapp {
   // public static void sayHi() {
   //   System.out.println("Hi! Nobody!");
   // }
+}
+
+// class
+class User {      // class名の1文字目は必ず大文字
+  String name = "Me!";      // classに属するnameを「フィールド」という, tom.nameに代入される
   
+  // constructor  クラスがインスタンス化される時に必ず呼ばれる特殊なメソッド　　メソッド==オーバーロード可
+  User(String name) {
+    this.name = name;     // メソッド内からクラスのフィールドにアクセスするには「this」を使用　今回は"Tom"が入る
+  }
+  
+  User() {      // 引数なしでインスタンス化されたとき
+    // this.name = "Me!";      // Me!を代入する
+    
+    // this()
+    this("Me!");      // 引数なしでインスタンス化した場合　→　引数が1つのUser(String name){...を呼んでくれる　→　this.nameにMe!が設定される
+  }
+  
+  void sayHi() {      // メソッド
+    System.out.println("hi! " + this.name);
+  }
 }

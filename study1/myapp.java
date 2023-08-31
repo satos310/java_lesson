@@ -241,11 +241,12 @@ public class myapp {
     System.out.println(msg2);
     
     // class
-    User tom;
+    // User tom;
     // tom = new User("Tom");     // newで新しい番地確保→ 「インスタンス化」, この状況ではtomのことを「インスタンス」と呼ぶ
-    tom = new User();     // 引数なしで呼ぶ　→　Me!が入る
-    System.out.println(tom.name);
-    tom.sayHi();
+    AdminUser bob = new AdminUser("bob");     // 引数なしで呼ぶ　→　Me!が入る,  クラスの宣言とインスタンス化は1行で書くことができる
+    System.out.println(bob.name);
+    bob.sayHi();
+    bob.sayHello();
   }
     // メソッド
   // public static void sayHi(String name) {     // ここでsayHi()内に変数を宣言 → 上の記述で呼び出す時にsayHi()と記述すれば、任意の値を渡せる
@@ -281,5 +282,22 @@ class User {      // class名の1文字目は必ず大文字
   
   void sayHi() {      // メソッド
     System.out.println("hi! " + this.name);
+  }
+}
+
+class AdminUser extends User {      // extendsを使用することでその後に書いたclassを継承する
+  
+  AdminUser(String name) {
+    super(name);      // 親クラスのコンストラクタ　　※親クラスのコンスタラクタに引数が開ければ省略可
+  }
+  
+  void sayHello() {      // メソッド
+    System.out.println("hello! " + this.name);
+  }
+  
+  // override   親クラスのメソッドを上書きすることができる
+  @Override     // 「アノテーション」という仕組みを使ってスペルミスや引数間違い時にエラーにしてくれる
+  void sayHi() {      // メソッド
+    System.out.println("[admin] hi! " + this.name);
   }
 }

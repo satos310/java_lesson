@@ -1,34 +1,19 @@
 package com.dotinstall.myapp.model;
 
+// staticキーワード　→　インスタンス化しなくてもクラスから直接使えるフィールドやメソッドを定義可
 public class User {      // class名の1文字目は必ず大文字
   // protected String name = "Me!";      // classに属するnameを「フィールド」という, tom.nameに代入される
   private String name;
-  private int score;
+  private static int count = 0;   // classに紐づいた形で値を保存できる
 
   // constructor  クラスがインスタンス化される時に必ず呼ばれる特殊なメソッド　　メソッド==オーバーロード可
   public User(String name, int score) {
     this.name = name;     // メソッド内からクラスのフィールドにアクセスするには「this」を使用　今回は"Tom"が入る
-    this.score = score;
+    User.count++;
   }
   
-  public int getScore() {     // getter
-    return this.score;
-  }
-  
-  public void setScore(int score) {     // setter
-    if (score > 0) {
-      this.score = score;
-    }
+  public static void getInfo() {
+    System.out.println("# of instances: " + User.count);
   }
 
-  // User() {      // 引数なしでインスタンス化されたとき
-  //   // this.name = "Me!";      // Me!を代入する
-
-  //   // this()
-  //   this("Me!");      // 引数なしでインスタンス化した場合　→　引数が1つのUser(String name){...を呼んでくれる　→　this.nameにMe!が設定される
-  // }
-
-  public void sayHi() {      // メソッド
-    System.out.println("hi! " + this.name);
-  }
 }

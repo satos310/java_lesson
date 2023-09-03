@@ -15,16 +15,6 @@ public class MyApp {
     bob.sayHello();
   }
 
-  // メソッド
-  // public static void sayHi(String name) {     // ここでsayHi()内に変数を宣言 → 上の記述で呼び出す時にsayHi()と記述すれば、任意の値を渡せる
-    // System.out.println("Hi!");
-    // System.out.println("Hi! " + name);
-
-  // メソッドの値を返してもらいたい時 → 「return 返したい値」
-  // public static String sayHi(String name) {     //  メソッドが値を返す時は、メソッド名の前に返すデータ型を書く必要有（※void → 「何も返さない」）
-  //   return "Hi! " + name;     // 引数　個数や方が違えば、同じ名前でいくつでも作ることができる（メソッドのオーバーロード）
-  // }
-
 // orverload
 // public static void sayHi() {
 //   System.out.println("Hi! Nobody!");

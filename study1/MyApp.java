@@ -1,36 +1,32 @@
-// final: 変更ができない
+// 抽象クラス　他のクラスに継承してもらうことを前提にしているクラス
+// 具象クラス　抽象クラスを継承するクラス
 
-final class User {      // このclassは継承できなくなる
-  protected String name;
-  private static final double VERSION = 1.1;      // 定数(VERSION)にする場合にfinalを使う, staticとfinalを併せてつかうことで一意性を持たせた変数を作れる。
-
-  public User(String name) {
-    this.name = name;
-    User.VERSION = 1.2;
-  }
-
-  public final void sayHi() {     // このメソッドはorverrideできなくなる
-    System.out.println("hi! " + this.name);
-  }
+abstract class User {      // abstract -> 抽象クラスになる
+  public abstract void sayHi();      // 抽象メソッド　具象クラスに実装を任せるメソッド
 }
 
-class AdminUser extends User {
-
-  public AdminUser(String name) {
-    super(name);
-  }
-
+class JapaneseUser extends User {
   @Override
   public void sayHi() {
-    System.out.println("[admin] hi! " + this.name);
+    System.out.println("こんにちは!");
   }
-
 }
+
+class AmericanUser extends User {
+  @Override
+  public void sayHi() {
+    System.out.println("Hi!");
+  }
+}
+
 
 public class MyApp {
 
   public static void main(String[] args) {
-    User tom = new User("tom");
+    AmericanUser tom = new AmericanUser();
+    JapaneseUser aki = new JapaneseUser();
+    tom.sayHi();
+    aki.sayHi();
   }
 
 }

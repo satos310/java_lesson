@@ -1,32 +1,31 @@
-// 抽象クラス　他のクラスに継承してもらうことを前提にしているクラス
-// 具象クラス　抽象クラスを継承するクラス
+// interface　クラス機能を拡張するための機能
 
-abstract class User {      // abstract -> 抽象クラスになる
-  public abstract void sayHi();      // 抽象メソッド　具象クラスに実装を任せるメソッド
+interface Printable {
+  // 定数
+  double VERSION = 1.2;
+  // 抽象メソッド
+  void print();     // 抽象メソッドは public abstract を省略できる
+  // defaultメソッド
+  public default void getInfo() {
+    System.out.println("I/F ver. " + Printable.VERSION);
+  }
+  // staticメソッド　インターフェースに属するメソッド　defaultメソッドの処理が複雑な際にまとめることができる
+  
 }
 
-class JapaneseUser extends User {
+class User implements Printable{      // 「implements インターフェース名」で
   @Override
-  public void sayHi() {
-    System.out.println("こんにちは!");
+  public void print() {
+    System.out.println("Now printint user profile...");
   }
 }
-
-class AmericanUser extends User {
-  @Override
-  public void sayHi() {
-    System.out.println("Hi!");
-  }
-}
-
 
 public class MyApp {
 
   public static void main(String[] args) {
-    AmericanUser tom = new AmericanUser();
-    JapaneseUser aki = new JapaneseUser();
-    tom.sayHi();
-    aki.sayHi();
+    User tom = new User();
+    tom.print();
+    tom.getInfo();
   }
 
 }

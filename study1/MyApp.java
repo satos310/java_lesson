@@ -1,31 +1,27 @@
-// interface　クラス機能を拡張するための機能
+// 列挙型　　データ型の一つ   // 定数をまとめたもの   （中にフィールドやメソッドを持つことができる）
 
-interface Printable {
-  // 定数
-  double VERSION = 1.2;
-  // 抽象メソッド
-  void print();     // 抽象メソッドは public abstract を省略できる
-  // defaultメソッド
-  public default void getInfo() {
-    System.out.println("I/F ver. " + Printable.VERSION);
-  }
-  // staticメソッド　インターフェースに属するメソッド　defaultメソッドの処理が複雑な際にまとめることができる
-  
-}
-
-class User implements Printable{      // 「implements インターフェース名」で
-  @Override
-  public void print() {
-    System.out.println("Now printint user profile...");
-  }
+enum Result {     // 列挙型 -> enumを使用
+  SUCCESS,      // 0    // 最後の , は無くてもいい    // データを追加する時などに便利
+  ERROR,      // 1    //  列挙型を定義 -> ordinal()というメソッドが定義され、0からはじまる連番がセットされる
 }
 
 public class MyApp {
 
   public static void main(String[] args) {
-    User tom = new User();
-    tom.print();
-    tom.getInfo();
+    Result res;
+
+    res = Result.ERROR;
+
+    switch(res) {
+      case SUCCESS:
+        System.out.println("OK!");
+        System.out.println(res.ordinal());     // 0
+        break;
+      case ERROR:
+        System.out.println("NG!");
+        System.out.println(res.ordinal());     // 1
+        break;
+    }
   }
 
 }

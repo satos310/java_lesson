@@ -1,27 +1,31 @@
-// 列挙型　　データ型の一つ   // 定数をまとめたもの   （中にフィールドやメソッドを持つことができる）
+// 例外   // プログラムの実行中に予期しない結果が発生した時の処理
 
-enum Result {     // 列挙型 -> enumを使用
-  SUCCESS,      // 0    // 最後の , は無くてもいい    // データを追加する時などに便利
-  ERROR,      // 1    //  列挙型を定義 -> ordinal()というメソッドが定義され、0からはじまる連番がセットされる
+class MyException extends Exception {     // bが例外の時用の設定
+  public MyException(String s) {
+    super(s);
+  }
 }
 
 public class MyApp {
-
-  public static void main(String[] args) {
-    Result res;
-
-    res = Result.ERROR;
-
-    switch(res) {
-      case SUCCESS:
-        System.out.println("OK!");
-        System.out.println(res.ordinal());     // 0
-        break;
-      case ERROR:
-        System.out.println("NG!");
-        System.out.println(res.ordinal());     // 1
-        break;
+  
+  public static void div(int a, int b) {
+    try {     // 例外が発生しそうな箇所をtryで囲む
+    if (b < 0) {
+      throw new MyException("not minus!");      // if文がyes -> コンストラクタを投げる
     }
+      System.out.println(a / b);
+    } catch(ArithmeticException e) {      // 例外をcatch    // catch()内に例外のワード + e を入れる
+      System.err.println(e.getMessage());     // errとすることで、標準 -> エラー出力する
+    } catch(MyException e) {
+      System.err.println(e.getMessage());
+    } finally {     // 例外の有無に限らず、最後に後処理を設定するブロック
+      System.err.println(" -- ebd --");
+    }
+  }
+  
+  public static void main(String[] args) {
+    div(3, 0);
+    div(5, -2);
   }
 
 }

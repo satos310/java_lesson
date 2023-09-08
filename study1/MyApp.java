@@ -1,20 +1,33 @@
-/*
-Wrapper Class   基本データ型に対応する参照型クラス
-int -> Integer
-double -> Double
-*/
+// generics   汎用化されたデータ型でクラスやインターフェースを作ることができる
 
+// class MyInteger {
+//   public void getThree(int x) {
+//     System.out.println(x);
+//     System.out.println(x);
+//     System.out.println(x);
+//   }
+// }
+
+// 上記と同じようなことをDoubleでもStringでもできるように型を汎用化させる
+
+class MyData<T> {     // <>内に汎用化する方をどう表現するか書く     // T -> Typeという意味で使われる
+  public void getThree(T x) {     // (int x)を(T x)へ変更
+    System.out.println(x);
+    System.out.println(x);
+    System.out.println(x);
+  }
+}
 
 public class MyApp {
   
   public static void main(String[] args) {
-    // Integer i = new Integer(32);      // Integerのラッパークラス型で i を宣言
-    // int n = i.intValue();     // ラッパークラスの値を基本データ型として取り出す
-    
-    Integer i = 32;     // auto boxing    自動変換を参照型に入れる
-    i = null;     // 参照型のデータには値そのものではなく、値が入っているメモリ領域の場所が入る -> どの場所も指示していない状態(null)
-    int n = i;      // auto unboxing    iはnullのため、unboxingできない
-    System.out.println();
+    // MyInteger mi = new MyInteger();
+    // mi.getThree(55);
+  
+    MyData<Integer> i = new MyData<>();     // <Integer>の<>内に入るのは参照型のみ -> int等は不可     // 右辺の変数MyDataの後にも<>をつける
+    i.getThree(32);     // Integer型でMyDataメソッドが使える
+    MyData<String> s = new MyData<>();
+    s.getThree("hello");      // String型でMyDataメソッドが
   }
 
 }

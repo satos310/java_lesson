@@ -1,29 +1,17 @@
-// Stringクラス
+// printfメソッド   System.out.printf()というメソッドを使用することで、文字列の書式を指定できる
 
 public class MyApp {
 
   public static void main(String[] args) {
-    String s = "abcdef";
-    System.out.println(s.length());     // length ... 文字数を返す -> 6
-    System.out.println(s.substring(2, 5));     // substrings ... 0番目から数えた範囲の文字列を指す -> 2番目から5文字目まで -> cde
-    System.out.println(s.replaceAll("ab", "AB"));     // replaceAll ... 文字列の置換 -> abがABになる
     
-    String s1 = "ab";
-    String s2 = "ab";
+    int score = 50;
+    double height = 165.8;
+    String name = "taguchi";
     
-    if (s1.equals(s2)) {      // equals ... s1とs2を比較する
-      System.out.println("same!");
-    }
+    System.out.printf("name: %s, score: %d, height: %f\n", name, score, height);      // 文字列 -> %s, 整数値 -> %d, 浮動小数手数 -> %f   // \n を書式指定の最後に入れつことで改行
+    System.out.printf("name: %-10s, score: %10d, height: %5.2f\n", name, score, height);      // 表示する桁数を指定    // 10 ... 右詰め, -10 ... 左詰め    // %5.2f ... 整数部分5桁・小数点以下2桁
     
-    if (s1 == s2) {     // 参照型データのため、メモリのどこに格納されているかの場所を比較する -> 中身を比較するため、same!same!が出力される
-      System.out.println("same!same!");
-    }
-    
-    String ss1 = new String("sb");      // new Stringと明示敵意メモリ領域をとっているため、メモリの格納場所がss1とss2は違う場所になる
-    String ss2 = new String("sb");      //  -> if文がnoになるため、System.out.printlnは実行されない
-    
-    if (ss1 == ss2) {
-      System.out.println("same!same!same!");
-    }
+    String s = String.format("name: %10s, score: %-10d, height: %5.2f\n", name, score, height);     // 文字列として受け取れるように -> Stringの変数にStringのformat()でデータを受け取る
+    System.out.println(s);
   }
 }

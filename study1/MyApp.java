@@ -1,45 +1,29 @@
-// Thread   コンピュータの処理単位のこと    複数立ち上げれば複数の処理を同時に実行可
-
-// Runnable   インターフェースの一つ    ここからnew Thread()に処理を渡す
-// class MyRunnable implements Runnable {     // 関数型インターフェース   抽象メソッドを一つだけ持つインターフェース -> 「ラムダ式」という記法に置き換え可
-//   @Override
-//   public void run() {
-//     for (int i = 0; i < 500; i++) {
-//       System.out.print('*');
-//     }
-//   }
-// }
-
-// ↑ 上記クラスは ↓ 下記のnew Threadメソッド内に移動
+// Stringクラス
 
 public class MyApp {
-  
+
   public static void main(String[] args) {
-    MyRunnable r = new MyRunnable();
-    // Thread t = new Thread(r);
-    // t.start();
+    String s = "abcdef";
+    System.out.println(s.length());     // length ... 文字数を返す -> 6
+    System.out.println(s.substring(2, 5));     // substrings ... 0番目から数えた範囲の文字列を指す -> 2番目から5文字目まで -> cde
+    System.out.println(s.replaceAll("ab", "AB"));     // replaceAll ... 文字列の置換 -> abがABになる
     
-    // ラムダ式
-    // （引数） -> ｛処理｝   「ラムダ式の記法 == Runnableインターフェース -> run()メソッド」とコンパイラが推測するため、記述不要となる
-    // new Thread(new Runnable() {     // 無名クラス   class名を省略可    // new Rannableには引数がなく処理がfor文のため、voidメソッドは不要
-    //   @Override
-    //   public void run() {
-    //     for (int i = 0; i < 500; i++) {
-    //       System.out.print('*');
-    //     }
-    //   }
-    // }).start();     // インスタンス化後に呼び出している
+    String s1 = "ab";
+    String s2 = "ab";
     
-    new Thread(() -> {      // ラムダ式の記法     new Threadの引数が{}の中身の処理という意味
-      for (int i = 0; i < 500; i++) {
-        System.out.print('*');
-      }
-    }).start();
+    if (s1.equals(s2)) {      // equals ... s1とs2を比較する
+      System.out.println("same!");
+    }
     
-    for (int i = 0; i < 500; i++) {
-      System.out.print('.');
+    if (s1 == s2) {     // 参照型データのため、メモリのどこに格納されているかの場所を比較する -> 中身を比較するため、same!same!が出力される
+      System.out.println("same!same!");
+    }
+    
+    String ss1 = new String("sb");      // new Stringと明示敵意メモリ領域をとっているため、メモリの格納場所がss1とss2は違う場所になる
+    String ss2 = new String("sb");      //  -> if文がnoになるため、System.out.printlnは実行されない
+    
+    if (ss1 == ss2) {
+      System.out.println("same!same!same!");
     }
   }
 }
-
-// Q.「インスタンス化」「インターフェース」「Runnnableインターフェース」「runメソッド」

@@ -1,21 +1,30 @@
-// 数学関連のクラス   Mathクラス
-
-import java.util.Random;      // randomを使用できるようにする
+import java.util.*;     // ArrayListを使用するためのjava.utilパッケージ
 
 public class MyApp {
-
+  // 売上管理
   public static void main(String[] args) {
-    double d = 53.234;
-    System.out.println(Math.ceil(d));     // 54   ceil...小数点以下切り上げ
-    System.out.println(Math.floor(d));     // 53   floor...小数点以下切り捨て
-    System.out.println(Math.round(d));     // 53   round...小数点以下四捨五入
-    System.out.println(Math.PI);     // PI...円周率を取得   定数
-    
-    // Math.radom()     // 乱数を発生させる
-    Random r = new Random();      // インスタンスを作る
-    // ランダムな結果を出す便利なメソッド
-    System.out.println(r.nextDouble());     // 0 - 1    r.nextDouble...0以上1未満の浮動小数点数
-    System.out.println(r.nextInt(100));     // 0 - 100    r.nextInt...0以上100未満の整数
-    System.out.println(r.nextBoolean());     // r.nextBooleanランダムなtrue / falseを取得
+    // ArrayList    後から要素を追加・削除可  配列と似てる
+    // LinkedList   ✕検索　◯追加／削除      // 今回のリストでは
+
+    // ArrayListだけで使えるメソッドはあまり使わない -> ArrayListが実装しているList型のインターフェースで宣言
+    // ArrayList<Integer> sales = new ArrayList<>();     // ジェネリクスを使った型
+    List<Integer> sales = new ArrayList<>();     // ジェネリクスを使った型
+
+    sales.add(10);
+    sales.add(20);
+    sales.add(30);
+
+    for (int i = 0; i < sales.size(); i++) {      // size...要素の個数が取れる
+      System.out.println(sales.get(i));     // それぞれの要素は0番目から始まっているので、get(i)
+    }
+
+    // 要素の変更と削除
+    sales.set(0, 100);      // 変更 -> sales.set()メソッド   0番目の要素を100に変更
+    sales.remove(2);      // 削除 -> sales.remove()メソッド   2番目（今回でいう最後）の要素を削除
+
+    // 上記のfor文の違う書き方
+    for (Integer sale : sales) {      // size...要素の個数が取れる
+      System.out.println(sale);     // それぞれの要素は0番目から始まっているので、get(i)
+    }
   }
 }

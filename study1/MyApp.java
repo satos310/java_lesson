@@ -1,30 +1,32 @@
-import java.util.*;     // ArrayListを使用するためのjava.utilパッケージ
+// HashSetクラス
+
+import java.util.*;     // HashSetを使用するためのjava.utilパッケージ
 
 public class MyApp {
-  // 売上管理
+
   public static void main(String[] args) {
-    // ArrayList    後から要素を追加・削除可  配列と似てる
-    // LinkedList   ✕検索　◯追加／削除      // 今回のリストでは
-
-    // ArrayListだけで使えるメソッドはあまり使わない -> ArrayListが実装しているList型のインターフェースで宣言
-    // ArrayList<Integer> sales = new ArrayList<>();     // ジェネリクスを使った型
-    List<Integer> sales = new ArrayList<>();     // ジェネリクスを使った型
-
+    // HashSet    同様複数のデータを扱う(ArrayListと同じ)   // ArrayListとの相違点・重複を許さない　・データを保持する順番が定まらない（ランダムではない）
+    // TreeSet    値順にソートされる
+    // LinkedHashSet    追加された順を保持する
+    
+    // HashSet<Integer> sales = new HashSet<>();
+    Set<Integer> sales = new HashSet<>();     // ArrayListと同様にSetインターフェース型で宣言可
+    
     sales.add(10);
     sales.add(20);
     sales.add(30);
-
-    for (int i = 0; i < sales.size(); i++) {      // size...要素の個数が取れる
-      System.out.println(sales.get(i));     // それぞれの要素は0番目から始まっているので、get(i)
+    sales.add(10);      // 同じ値を追加しても、「重複を許さない」-> 要素は増えない, 「順番が定まらない」-> 『○番目を取り出す』ができない
+    
+    System.out.println(sales.size());     // sizeメソッドで要素の個数を取得することはできる   // 3
+    
+    for (Integer sale : sales) {      // for文を使用して要素の中身全てを取り出す
+      System.out.println(sale);      // 取り出す順番は保証されない
     }
-
-    // 要素の変更と削除
-    sales.set(0, 100);      // 変更 -> sales.set()メソッド   0番目の要素を100に変更
-    sales.remove(2);      // 削除 -> sales.remove()メソッド   2番目（今回でいう最後）の要素を削除
-
-    // 上記のfor文の違う書き方
-    for (Integer sale : sales) {      // size...要素の個数が取れる
-      System.out.println(sale);     // それぞれの要素は0番目から始まっているので、get(i)
+    
+    sales.remove(30);     // 要素の削除 -> 直接選択して削除
+    
+    for (Integer sale : sales) {      // for文を使用して要素の中身全てを取り出す
+      System.out.println(sale);      // 取り出す順番は保証されない
     }
   }
 }

@@ -1,17 +1,21 @@
-// printfメソッド   System.out.printf()というメソッドを使用することで、文字列の書式を指定できる
+// 数学関連のクラス   Mathクラス
+
+import java.util.Random;      // randomを使用できるようにする
 
 public class MyApp {
 
   public static void main(String[] args) {
+    double d = 53.234;
+    System.out.println(Math.ceil(d));     // 54   ceil...小数点以下切り上げ
+    System.out.println(Math.floor(d));     // 53   floor...小数点以下切り捨て
+    System.out.println(Math.round(d));     // 53   round...小数点以下四捨五入
+    System.out.println(Math.PI);     // PI...円周率を取得   定数
     
-    int score = 50;
-    double height = 165.8;
-    String name = "taguchi";
-    
-    System.out.printf("name: %s, score: %d, height: %f\n", name, score, height);      // 文字列 -> %s, 整数値 -> %d, 浮動小数手数 -> %f   // \n を書式指定の最後に入れつことで改行
-    System.out.printf("name: %-10s, score: %10d, height: %5.2f\n", name, score, height);      // 表示する桁数を指定    // 10 ... 右詰め, -10 ... 左詰め    // %5.2f ... 整数部分5桁・小数点以下2桁
-    
-    String s = String.format("name: %10s, score: %-10d, height: %5.2f\n", name, score, height);     // 文字列として受け取れるように -> Stringの変数にStringのformat()でデータを受け取る
-    System.out.println(s);
+    // Math.radom()     // 乱数を発生させる
+    Random r = new Random();      // インスタンスを作る
+    // ランダムな結果を出す便利なメソッド
+    System.out.println(r.nextDouble());     // 0 - 1    r.nextDouble...0以上1未満の浮動小数点数
+    System.out.println(r.nextInt(100));     // 0 - 100    r.nextInt...0以上100未満の整数
+    System.out.println(r.nextBoolean());     // r.nextBooleanランダムなtrue / falseを取得
   }
 }

@@ -1,33 +1,27 @@
-// HashMapクラス
+// Stream API
 
-import java.util.*;     // HashSetを使用するためのjava.utilパッケージ
+import java.util.*;     // Stream APIを使用するためのjava.utilパッケージ
 
 public class MyApp {
-
   public static void main(String[] args) {
-    // HashMap    複数データを管理するためのもの    keyとvalueでデータを管理    // 追加したデータの順番が不定
-    // TreeMap    keyの順番でデータを保持
-    // LinkedHashMap    データが追加された順番でデータを保持
-
-    // HashMap<String, Integer> sales = new HashMap<>();      // key: Stringとvalue: valueの型を指定
-    Map<String, Integer> sales = new HashMap<>();     // HashSet : SetのようにHashMap: Map型のインターフェースで宣言可
-
-    sales.put("tom", 10);
-    sales.put("bob", 20);
-    sales.put("steve", 30);
-
-    System.out.println(sales.get("tom"));     // get() -> 要素の取得, key(tom)の取得   // vakue（値）は10
-    System.out.println(sales.size());     // size() -> 要素の個数も取得できる -> 3
-
-    for (Map.Entry<String, Integer> sale : sales.entrySet()) {     // Map.Entry: 全ての中身を確認, entrySet: <Integer, String>の組み合わせを一つずつ扱うループ
-      System.out.println(sale.getKey() + ":" + sale.getValue());
-    }
-
-    sales.put("tom", 100);     // put: 値の更新
-    sales.remove("steave");      // 要素の削除
-
-    for (Map.Entry<String, Integer> sale : sales.entrySet()) {
-      System.out.println(sale.getKey() + ":" + sale.getValue());
-    }
+    // Stream   複数の値を順番に処理していくための仕組み    // よくArrayListなどの集合データと合わせて使われる
+    List<Integer> sales = new ArrayList<>(Arrays.asList(12, 30, 22, 4, 9));      // Arrays.asList...宣言と同時に値を入れ込んでいくのに使用（配列を作成）
+    
+    // 前回までのやり方（値に対して何らかのアクション）   // シンプルな処理しか扱えない
+    // for (Integer sale : sales) {
+    //   System.out.println();
+    // }
+    
+    // Streamを使用   .stream()を使用する
+    sales
+      .stream()
+      // 0 個以上の中間処理
+      .filter(e -> e % 3 == 0)      // ラムダ式を渡すことができる   「引数 -> 処理」の形式
+                                    // それぞれの要素がeに入ってくるe%3==0で処理 -> 真の値のものだけ抽出
+      // 抽出結果を.map()に渡す
+      .map(e -> "(" + e + ")")      // ラムダ式使用可
+      // 最後に終端処理に渡す
+      .forEach(System.out::println);      // forEach()を使用する際は記述方法が少し違う
+    
   }
 }

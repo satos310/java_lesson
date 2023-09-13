@@ -1,27 +1,22 @@
-// Stream API
+// LocalDataTime
 
-import java.util.*;     // Stream APIを使用するためのjava.utilパッケージ
+import java.time.*;     // LocalDataTimeを使用するためのjava.utilパッケージ
+import java.time.format.DateTimeFormatter;     // 好きなフォーマッ（書式）トで出力する ≒ Excelのデータ書式をユーザー定義にするイメージ
 
 public class MyApp {
   public static void main(String[] args) {
-    // Stream   複数の値を順番に処理していくための仕組み    // よくArrayListなどの集合データと合わせて使われる
-    List<Integer> sales = new ArrayList<>(Arrays.asList(12, 30, 22, 4, 9));      // Arrays.asList...宣言と同時に値を入れ込んでいくのに使用（配列を作成）
+    LocalDateTime d = LocalDateTime.now();      // LocalDataTime...日時に関するクラス, タイムゾーンを考慮しない    // LocalDataTime.now()...現在時刻のインスタンスを取得
+    // LocalDataTime d = LocalDataTime.of(2023, 9, 14, 7, 13, 30);     // 特定の日付の椅子タスがほしい場合（年, 月, 日, 時, 分, 秒）
+    // LocalDataTime d = LocalDataTime.parase("2023-09-04T07:13:30");// 
     
-    // 前回までのやり方（値に対して何らかのアクション）   // シンプルな処理しか扱えない
-    // for (Integer sale : sales) {
-    //   System.out.println();
-    // }
+    System.out.println(d.getYear());      // 2023   年のみを取得
+    System.out.println(d.getMonth());     // SEPTEMBER    月のみを取得
+    System.out.println(d.getMonth().getValue());    // 9    月を数字で取得
     
-    // Streamを使用   .stream()を使用する
-    sales
-      .stream()
-      // 0 個以上の中間処理
-      .filter(e -> e % 3 == 0)      // ラムダ式を渡すことができる   「引数 -> 処理」の形式
-                                    // それぞれの要素がeに入ってくるe%3==0で処理 -> 真の値のものだけ抽出
-      // 抽出結果を.map()に渡す
-      .map(e -> "(" + e + ")")      // ラムダ式使用可
-      // 最後に終端処理に渡す
-      .forEach(System.out::println);      // forEach()を使用する際は記述方法が少し違う
+    System.out.println(d.plusMonths(2).minusDays(3));     // 日時計算   2ヶ月分足して、3日分引く
     
+    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");     // ""内の記号はたくさんある   「DateTimeFormatter」で検索
+    System.out.println(d.format(dtf));      // dに対して.format()を渡す -> dtfを渡す -> 「yyyy!MM!dd!」の書式で出力
+                                            // 日時クラスは変更不可（イミュータブル） -> 日時計算は度外視されている
   }
 }

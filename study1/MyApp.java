@@ -1,15 +1,18 @@
-// for文
-// Helloを３回表示させる
+// 配列と反復処理   よく組み合わせで使われる
+// 
 
 import java.util.Scanner;
 
 public class MyApp {
   public static void main(String[] args) {
-    // for(int i = 0; i < 3; i++) {      // ①   下記①〜③は全て同じ結果    単純に指定した回数だけ処理を行いたい場合によく使われる
-    // for(int i = 1; i < 4; i++) {      // ②   初期値は0でなくてもOK
-    for(int i = 1; i <= 3; i++) {      // ③
-      System.out.println(i + " Hello");     // "Hello"の前にi(変数)を持ってくることで、回数を表示させる
-    }
+    int [] scores = {70, 90, 80, 60};      // 整数の配列    }のあとは;必要
+    // System.out.println(scores[0]);
+    // System.out.println(scores[1]);
+    // System.out.println(scores[2]);      // ▲要素が多くなると、コードが長くなる
     
+    // for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < scores.length; i++) {     // 変数.lengthとすることで、配列の要素の数だけ実行する
+      System.out.println(scores[i]);      // scoresの配列Noを[i]に代入
+    }
   }
 }

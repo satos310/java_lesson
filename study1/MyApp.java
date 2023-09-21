@@ -1,15 +1,18 @@
-// while文で反復処理をする
-// 繰り返し回数が予あらかじめ決まっていない、分かりにくい場合に使用する
+// do...while文
+// 条件判定(while)が後ろに来ているため、必ず最初に1回処理が実行される
+// 使用条件 : 繰り返す回数がわからない && 最初に必ず1回は処理を実行したい
+//            ネットワーク越しにデータを取得してみて、何らかのエラーが発生したら何度でも再取得したい
+// 使用頻度: △
 
 import java.util.Scanner;
 
-// 500円のお金を1年毎に10％ずつ増えて言った場合の条件・反復処理
+// パスワードを入力してもらって、間違えていたら入力し直してもらう
 public class MyApp {
   public static void main(String[] args) {
-    double money = 500;
-    while (money < 1000.0) {      // moneyが１０００円を超えるまで反復処理を実行
-      money *= 1.1;
-      System.out. println(money);
-    }
+    String password;
+    do {
+      password = new Scanner(System.in).next();
+    } while (password.equals("d0t1nsta11") == false);     // equals.を使用することで、変数password(入力された値)と()内の値を比較する
+    System.out.println("Password matched");
   }
 }

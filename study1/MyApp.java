@@ -1,18 +1,19 @@
-// do...while文
-// 条件判定(while)が後ろに来ているため、必ず最初に1回処理が実行される
-// 使用条件 : 繰り返す回数がわからない && 最初に必ず1回は処理を実行したい
-//            ネットワーク越しにデータを取得してみて、何らかのエラーが発生したら何度でも再取得したい
-// 使用頻度: △
+// break, continueを使ってみる    ループを途中で抜ける
 
 import java.util.Scanner;
 
-// パスワードを入力してもらって、間違えていたら入力し直してもらう
+// 
 public class MyApp {
   public static void main(String[] args) {
-    String password;
-    do {
-      password = new Scanner(System.in).next();
-    } while (password.equals("d0t1nsta11") == false);     // equals.を使用することで、変数password(入力された値)と()内の値を比較する
-    System.out.println("Password matched");
+    int[] scores = {70, -10, 80, 90};      // 点数を配列で配布
+    for (int score: scores) {     // 拡張型for文
+      if (score < 0) {
+        // break;      // 途中でループを抜け出す   プログラムを終了させる訳では無い -> "Finished"は表示される -> 70 Finished
+        continue;     // if文の該当データをスキップして次の処理を継続 -> 70 80 90 Finished
+      }
+      System.out.println(score);
+    }
+    
+    System.out.println("Finished");
   }
 }

@@ -1,16 +1,20 @@
-// 条件演算子
-// ◯シンプルな処理   ✕複雑な処理（コードが読みにくくなる
+// 論理演算子
+// AなおかつB -> A && B,    AまたはB -> A || B,   Aではない -> !A
 
 import java.util.Scanner;
 
-// 
+// EnglishとMathの点数を受け取り、その値によって処理を条件分岐させる
 public class MyApp {
   public static void main(String[] args) {
-    int score = new Scanner(System.in).nextInt();
-    String result = score >= 90 ? "A!" : "B!";      // score >= 80の条件が成立 -> A!(１つ目),   不成立 -> B!(２つ目)のデータを返す
-    // String result = if(score >= 90) { "A!"; } else { "B!"; }     // if文は使用不可   why ifはあくまでも何らかの処理をする命令文であって、最終的に値になるわけではない
-                                                                    //  -> 変数や定数に代入は不可
+    System.out.print("English? ");
+    int english = new Scanner(System.in).nextInt();
+    System.out.print("Math? ");
+    int math = new Scanner(System.in).nextInt();
     
-    System.out.println(result);
+    if (!(english >= 80 && math >= 80)) {     // !を頭につけることで、動作が逆になり「どちらも80点以下の時」にA!と表示される
+      System.out.println("A!");
+    } else {
+      System.out.println("B!");
+    }
   }
 }

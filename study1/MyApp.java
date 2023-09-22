@@ -1,19 +1,16 @@
-// break, continueを使ってみる    ループを途中で抜ける
+// 条件演算子
+// ◯シンプルな処理   ✕複雑な処理（コードが読みにくくなる
 
 import java.util.Scanner;
 
 // 
 public class MyApp {
   public static void main(String[] args) {
-    int[] scores = {70, -10, 80, 90};      // 点数を配列で配布
-    for (int score: scores) {     // 拡張型for文
-      if (score < 0) {
-        // break;      // 途中でループを抜け出す   プログラムを終了させる訳では無い -> "Finished"は表示される -> 70 Finished
-        continue;     // if文の該当データをスキップして次の処理を継続 -> 70 80 90 Finished
-      }
-      System.out.println(score);
-    }
+    int score = new Scanner(System.in).nextInt();
+    String result = score >= 90 ? "A!" : "B!";      // score >= 80の条件が成立 -> A!(１つ目),   不成立 -> B!(２つ目)のデータを返す
+    // String result = if(score >= 90) { "A!"; } else { "B!"; }     // if文は使用不可   why ifはあくまでも何らかの処理をする命令文であって、最終的に値になるわけではない
+                                                                    //  -> 変数や定数に代入は不可
     
-    System.out.println("Finished");
+    System.out.println(result);
   }
 }

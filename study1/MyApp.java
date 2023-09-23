@@ -1,25 +1,15 @@
-// スコープについて
-// 変数や定数が有効である範囲のこと
-// スコープが異なれば同じ名前で変数を宣言することができる(変数の使い回し可)
+// メソッドの基本的な構造は「入力(引数) -> 処理 -> 出力(返り値)」
+// 仮引数...「仮で変数を使っておく」  メソッドを定義している際に渡している
+// 実引数...「実際にこの値を使って」  メソッドを実行する際に渡している
 
-import java.util.Scanner;
-
-// EnglishとMathの点数を受け取り、その値によって処理を条件分岐させる
+// 
 public class MyApp {
-  // public static void main(String[] args) {
-  //   int amount = 120;
-    
-  //   if (amount > 0) {
-  //     int sales = 100 * amount;     // 変数は宣言されたブロックの中の宣言された箇所以降(以下)で有効　 Javaのルール
-  //     System.out.println(sales);
-  //   }
-    
-    // System.out.println(sales);     // 宣言されたブロック外になるため、salesは使えない
-    
-    for (let i = 0; i < 3; i++) {     // 変数iのスコープはfor{}内になる
-      System.out.println(i);
-    }
-    
-    // System.out.println(i);     // iは宣言箇所から見てブロック外になるため、使用不可
+  private static int triple(int num) {     // 仮引数     // private static...フィールド：クラス内からのみアクセス可能、　メソッド：クラス内からのみ呼び出し可能
+    return num * 3;     // tripleメソッドの処理の中身
+  }
+  
+  public static void main(String[] args) {
+    System.out.println(triple(10));     // 実引数 30   // triple...整数値を３倍にする
+    System.out.println(triple(4) * 3);      // 実引数 36
   }
 }

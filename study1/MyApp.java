@@ -1,18 +1,22 @@
-// 返り値のないメソッドを実装
+// メソッドで処理をまとめてみる
+// コードの重複を減らせる
 
-// 2つの整数値を渡す -> 合計して返してくれる    sumメソッド
+// 
 public class MyApp {
-  private static int sum(int a, int b) {      // 1.返り値があるメソッド -> 返り値の結果を使って他の演算ができる
-    return a + b;
+  private static void showAd() {      // 実引数なし -> 仮引数も空()でOK
+    System.out.println("---------");
+    System.out.println("SALE! 50% OFF!");
+    System.out.println("---------");
   }
-
-  private static void showSum(int a, int b) {     // 2.showSumメソッド -> 合計を表示するだけであれば直接指示可
-                                                  // returnがないため、int -> void（何も返さない）にする必要有
-    System.out.println(a + b);
+  
+  private static void showContent() {
+    System.out.println("BREAKING NEWS!");
+    System.out.println("Two baby pandas born at our Zoo!");
   }
   
   public static void main(String[] args) {
-    System.out.println(sum(3, 7));
-    showSum(3, 7);
+    showAd();
+    showContent();
+    showAd();     // メソッドを呼び出すだけでshowAdの中身をもう一度記述せずに済む
   }
 }

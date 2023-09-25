@@ -1,22 +1,19 @@
-// メソッドで処理をまとめてみる
-// コードの重複を減らせる
+// 真偽値を返すメソッドを実装
 
-// 
+// isDividableメソッド    ある整数値を他の整数値で割り切れるかを、trueまたはfalseの真偽値で返す
 public class MyApp {
-  private static void showAd() {      // 実引数なし -> 仮引数も空()でOK
-    System.out.println("---------");
-    System.out.println("SALE! 50% OFF!");
-    System.out.println("---------");
-  }
-  
-  private static void showContent() {
-    System.out.println("BREAKING NEWS!");
-    System.out.println("Two baby pandas born at our Zoo!");
+  private static boolean isDividable(int a, int b) {
+    if (a % b == 0) {
+      return true;
+    } else {
+      return false;
+    }
+    // System.out.println(isDividable("---end---"));      // returnされた時点で処理は呼び出し元に戻るため、それ以降は実行されない
   }
   
   public static void main(String[] args) {
-    showAd();
-    showContent();
-    showAd();     // メソッドを呼び出すだけでshowAdの中身をもう一度記述せずに済む
+    System.out.println(isDividable(10, 2));     // true
+    System.out.println(isDividable(10, 3));     // false
+    // System.out.println(isDividable(10, 0));     // errorが起きる
   }
 }

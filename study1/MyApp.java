@@ -1,23 +1,15 @@
-// メソッドをオーバーロードする
-// ある名前のメソッドを違う（複数の）データ型の引数に対応させていくことができる
+// ジェネリクスを使ってみる   データ型をパラメータ化できる
 
-// メソッド名、引数の数、型、順序の組み合わせをメソッドのシグネチャーと呼ぶ。
-
-// 整数を渡すと、それを3回表示してくれる
+// 下記のメソッドで異なるのはデータ型のみ -> 実行時に指定できるパラメータにする
+// パラメータに引数のように好きな名前をつけられる
 public class MyApp {
-  private static void showThreeTimes(int n) {     // 整数 が渡されたらこのprovateフィールド内のメソッドが実行される
+  private static <T> void showThreeTimes(T n) {     // 大文字の「T」がよく使われる    // 返り値の前で<>,  変数名の前で宣言する
     System.out.println(n);
     System.out.println(n);
     System.out.println(n);
   }
   
-  // 「メソッドをオーバーロードする」...同じ名前のメソッドを違うシグネチャーで定義すること
-  private static void showThreeTimes(double n) {      // 小数 が渡されたらこのprovateフィールド内のメソッドが実行される
-    System.out.println(n);
-    System.out.println(n);
-    System.out.println(n);
-  }
-  
+  // 渡されるデータ型はJavaが自動で判別してくれる
   public static void main(String[] args) {
     showThreeTimes(3);
     showThreeTimes(5.2);

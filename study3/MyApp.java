@@ -1,17 +1,24 @@
-// ジェネリクスを使ってみる   データ型をパラメータ化できる
+// フィールドの値にアクセスする
 
-// 下記のメソッドで異なるのはデータ型のみ -> 実行時に指定できるパラメータにする
-// パラメータに引数のように好きな名前をつけられる
+// user1, user2のインスタンス -> それぞれの値のnameやscoreフィールドに値をセットしていく
+class User {
+  String name;
+  int score;
+}
+
 public class MyApp {
-  private static <T> void showThreeTimes(T n) {     // 大文字の「T」がよく使われる    // 返り値の前で<>,  変数名の前で宣言する
-    System.out.println(n);
-    System.out.println(n);
-    System.out.println(n);
-  }
-  
-  // 渡されるデータ型はJavaが自動で判別してくれる
   public static void main(String[] args) {
-    showThreeTimes(3);
-    showThreeTimes(5.2);
+    User user1 = new User();
+    user1.name = "Taro";      // user1のnameフィールドに値を設定したい
+    user1.score = 70;
+    
+    User user2 = new User();
+    user2.name = "Jiro";      // user2のnameフィールドに値を設定したい
+    user2.score = 80;
+    
+    System.out.println(user1.name);
+    System.out.println(user1.score);
+    System.out.println(user2.name);
+    System.out.println(user2.score);
   }
 }

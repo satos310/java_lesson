@@ -1,40 +1,16 @@
-// メソッドへのアクセス制限をする
+// クラス変数を使ってみる
 
-// 0~100点から外れた数字をエラーで弾く
+// Userクラスからいくつインスタンスが作られたかを表示する
 class User {
-  String name;
-  private int score;        // カプセル化   scoreに対してprivateというキーワードをつける -> Userクラスの外からはScoreフィールドにアクセス・取得できなくなる（アクセス修飾子）
+  String name;              // インスタンス変数...個々のインスタンスに関する値を保持する変数
+  int score;                // インスタンス変数
+  static int count = 0;     // クラス変数...クラス全体に関する値を保持する変数      // static  クラス全体で1つの値だけを管理する変数にしたい
+  // staticをつけない -> nameやscore同様、インスタンスごとにcount= 0の値が維持されてしまう
 
   User(String name, int score) {
     this.name = name;
     this.score = score;
-  }
-
-  String getUserString() {
-    return this.name + ", " + this.score + ", " + this.getResult();     // this.は省略可
-  }
-  
-  // setter   フィールドに値をセットするメソッド
-  void setScore(int score) {
-    if (score < 0 || score > 100) {
-      System.out.println("Invalid score!");
-      return;       // 0~100以外の場合は値の更新が行われないようにする    return -> 処理は途切れない
-    }
-    this.score = score;
-  }
-  
-  // getter   値を取得するためのメソッド
-  // よく使われるテクニック   安全にアクセスするためのメソッドを別途用意する
-  int getScore() {      // privateにしたフィールドの値を取得したい -> メソッドを定義する
-    return this.score;      // privateのscoreに対して、インスタンスのscoreを返す    // 返り値はint
-  }
-  
-  private String getResult() {      // メソッドのアクセス管理   privateをつける->クラス外の48,49行目がエラー表示される
-    if (this.score >= 80) {
-      return "Pass";
-    } else {
-      return "Fail";
-    }
+    User.count++;     // インスタンスを作るたびにcount++ -> 「Userクラスに紐づく変数」と分かるように先頭にクラス名(User)をつける
   }
 }
 
@@ -43,10 +19,7 @@ public class MyApp {
     User user1 = new User("Taro", 70);
     User user2 = new User("Jiro", 80);
 
-    System.out.println(user1.getUserString());
-    System.out.println(user2.getUserString());
-    System.out.println(user1.getResult());      // 試験の点数に応じた結果を文字列で返す -> ここで表示
-    System.out.println(user2.getResult());
+    System.out.println(User.count);      // Userクラスの外でcount変数を使う -> 先頭にクラス名必須(User)
 
   }
 }

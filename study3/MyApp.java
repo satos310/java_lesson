@@ -1,5 +1,4 @@
-// アクセス修飾子を使う
-// 想定外の値を入れない安全なプログラム
+// メソッドへのアクセス制限をする
 
 // 0~100点から外れた数字をエラーで弾く
 class User {
@@ -12,7 +11,7 @@ class User {
   }
 
   String getUserString() {
-    return name + ", " + score;
+    return this.name + ", " + this.score + ", " + this.getResult();     // this.は省略可
   }
   
   // setter   フィールドに値をセットするメソッド
@@ -29,6 +28,14 @@ class User {
   int getScore() {      // privateにしたフィールドの値を取得したい -> メソッドを定義する
     return this.score;      // privateのscoreに対して、インスタンスのscoreを返す    // 返り値はint
   }
+  
+  private String getResult() {      // メソッドのアクセス管理   privateをつける->クラス外の48,49行目がエラー表示される
+    if (this.score >= 80) {
+      return "Pass";
+    } else {
+      return "Fail";
+    }
+  }
 }
 
 public class MyApp {
@@ -36,13 +43,10 @@ public class MyApp {
     User user1 = new User("Taro", 70);
     User user2 = new User("Jiro", 80);
 
-    // user1.score = 900;      // 謝って入力ミスが起こしてしまう
-    // user1.setScore(900);
-    // System.out.println(user1.score);
-    System.out.println(user1.getScore());
-
     System.out.println(user1.getUserString());
     System.out.println(user2.getUserString());
+    System.out.println(user1.getResult());      // 試験の点数に応じた結果を文字列で返す -> ここで表示
+    System.out.println(user2.getResult());
 
   }
 }

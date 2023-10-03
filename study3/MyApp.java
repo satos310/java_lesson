@@ -1,30 +1,32 @@
-// クラスメソッドを使ってみる
+// Scoreクラスを定義する
 
-// Userクラスからいくつインスタンスが作られたかを表示する
+// 点数に科目の内容も含める -> Scoreというデータ型を作りプログラムを拡張する
+class Score {
+  private String subject;
+  private int score;
+  
+  Score(String subject, int score) {
+    this.subject = subject;
+    this.score = score;     // 宣言の理由を復習要
+    
+  }
+}
+
 class User {
-  String name;              // インスタンス変数...個々のインスタンスに関する値を保持する変数
-  int score;                // インスタンス変数
-  private static int count = 0;     // クラス変数...クラス全体に関する値を保持する変数      // static  クラス全体で1つの値だけを管理する変数にしたい
-  // staticをつけない -> nameやscore同様、インスタンスごとにcount= 0の値が維持されてしまう
-
-  User(String name, int score) {
+  private String name;
+  private Score score;      // Q. ここも
+  // A. new Score()でStringとintを一塊で扱っているため、変数のような箱で一括にデータを送り返ししている
+  User(String name, Score score) {      // Q. なぜUserクラスのコンストラクタに渡すsocoreの値がintからScoreになるのか？
     this.name = name;
     this.score = score;
-    User.count++;     // インスタンスを作るたびにcount++ -> 「Userクラスに紐づく変数」と分かるように先頭にクラス名(User)をつける
-  }
-  
-                                  // インスタンスメソッド   saticをつけない -> 個々のインスタンスにあんする処理を実行
-  static int getUserCount() {     // クラスメソッド   staticついてる -> class自体に関するメソッド
-    return User.count;
   }
 }
 
 public class MyApp {
   public static void main(String[] args) {
-    User user1 = new User("Taro", 70);
-    User user2 = new User("Jiro", 80);
-
-    System.out.println(User.getUserCount());
+    // 点数 + 科目の内容を含める -> データ型(Score)を作ってプログラムを拡張する
+    User user1 = new User("Taro", new Score("Math", 70));     // Scoreクラスでは科目と点数を保持したい -> 数学, 70と明記
+    User user2 = new User("Jiro", new Score("English", 80));
 
   }
 }

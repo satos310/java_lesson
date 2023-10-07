@@ -1,6 +1,6 @@
 // 点数に応じた結果を表示する
 
-// 
+// 点数に応じてPassかFailかの文字列を連けるしていきたい
 class Score {
   private String subject;
   private int score;
@@ -10,12 +10,12 @@ class Score {
     this.score = score;
   }
   
-  // 条件演算子を使用(IF文でもイケる)
+  // 合否の表示処理   // 条件演算子を使用(if文でもイケる)
   private String getResult() {      // このメソッドは内部処理用 -> Scoreクラス内でしか使えないようにしたい -> private
     return this.score >= 80? "Pass" : "Fails";
   }
   
-  // 点数に応じてPassかFailかの文字列を連けるしていきたい
+  // ここに合否処理を書いてもいいが、コードの1文が長くなる -> getResultメソッドを作成して別途処理する
   String getScoreString() {
     return this.subject + ", " + this.score + ", " +this.getResult();
   }

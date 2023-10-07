@@ -1,18 +1,23 @@
-// インスタンスの情報を表示してみる
-// クラスごとに「Scoreに関する実装」「Userに関する実装」を分ける -> 機能拡張時に修正しやすい
+// 点数に応じた結果を表示する
 
-// MyAppクラス内のインスタンスに設定された情報を表示する
+// 
 class Score {
   private String subject;
   private int score;
   
   Score(String subject, int score) {
     this.subject = subject;
-    this.score = score;     // 宣言の理由を復習要
+    this.score = score;
   }
   
-  String getScoreString() {     // 3. private外でsubject, scoreのデータを引数にするメソッドを定義
-    return this.subject + ", " + this.score;
+  // 条件演算子を使用(IF文でもイケる)
+  private String getResult() {      // このメソッドは内部処理用 -> Scoreクラス内でしか使えないようにしたい -> private
+    return this.score >= 80? "Pass" : "Fails";
+  }
+  
+  // 点数に応じてPassかFailかの文字列を連けるしていきたい
+  String getScoreString() {
+    return this.subject + ", " + this.score + ", " +this.getResult();
   }
 }
 
@@ -24,18 +29,17 @@ class User {
     this.score = score;
   }
   
-  String getString() {
-    // return this.name + ", " + this.score.subject;      // 1. 文字列を返したい but scoreとsubjectはScoreクラスでprivateに設定されている
-    return this.name + ", " + this.getScoreString();      // 2. getScoreString()というメソッドを実行し、結果を連結する
+  String getUserString() {
+    return this.name + ", " + this.score.getScoreString();
   }
 }
 
 public class MyApp {
   public static void main(String[] args) {
-    User user1 = new User("Taro", new Score("Math", 70));     // Scoreクラスでは科目と点数を保持したい -> 数学, 70と明記
+    User user1 = new User("Taro", new Score("Math", 70));
     User user2 = new User("Jiro", new Score("English", 80));
     
-    System.out.println(user1.getString());
-    System.out.println(user2.getString());
+    System.out.println(user1.getUserString());
+    System.out.println(user2.getUserString());
   }
 }

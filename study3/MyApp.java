@@ -1,6 +1,6 @@
-// 点数に応じた結果を表示する
+// Scoreクラスを継承する
 
-// 点数に応じてPassかFailかの文字列を連けるしていきたい
+// 処理を小クラスに分ける -> 親クラスと同じように動作するため、コードの変更が少なくて済む
 class Score {
   private String subject;
   private int score;
@@ -10,14 +10,24 @@ class Score {
     this.score = score;
   }
   
-  // 合否の表示処理   // 条件演算子を使用(if文でもイケる)
-  private String getResult() {      // このメソッドは内部処理用 -> Scoreクラス内でしか使えないようにしたい -> private
+  private String getResult() {
     return this.score >= 80? "Pass" : "Fails";
   }
   
-  // ここに合否処理を書いてもいいが、コードの1文が長くなる -> getResultメソッドを作成して別途処理する
   String getScoreString() {
     return this.subject + ", " + this.score + ", " +this.getResult();
+  }
+}
+
+class MathScore extends Score {     // クラス名 extends 継承元クラス名
+  MathScore (int score) {     // 引数の数を変えた -> それぞれのクラスでコンストラクターを再定義する必要がある
+    // 親クラスのコンストラクタと同じような処理をしたい
+    super("Math", score);     // super()    親クラスのコンストラクタを
+  }
+}
+class EnglishScore extends Score {     // クラス名 extends 継承元クラス名
+  EnglishScore (int score) {
+    super("English", score);
   }
 }
 
@@ -36,8 +46,8 @@ class User {
 
 public class MyApp {
   public static void main(String[] args) {
-    User user1 = new User("Taro", new Score("Math", 70));
-    User user2 = new User("Jiro", new Score("English", 80));
+    User user1 = new User("Taro", new MathScore(70));     // 新しく作ったクラス名のインスタンス作成
+    User user2 = new User("Jiro", new EnglishScore(80));     // 新しく作ったクラス名のインスタンス作成
     
     System.out.println(user1.getUserString());
     System.out.println(user2.getUserString());

@@ -1,8 +1,7 @@
-// メソッドをオーバーライドする
+// 抽象メソッドを使う   abstract
 
-// ＠Override
-// private -> protected   親クラスのメソッドを小クラスで上書き
-class Score {
+// 抽象メソッドを使用 -> クラスの頭にもabstractをつける
+abstract class Score {
   private String subject;
   protected int score;
 
@@ -10,10 +9,11 @@ class Score {
     this.subject = subject;
     this.score = score;
   }
-
-  protected String getResult() {      // private -> protected   小クラス(教科ごと)でgetResult()を上書きしたい
-    return this.score >= 80? "Pass" : "Fails";
-  }
+  
+  // // abstract(抽象メソッド)   「メソッドを小クラスで必ず実装する」 -> 実装されないとエラーで教えてくれる
+  protected abstract String getResult();      // 抽象メソッド...実装がなく不完全 -> このクラス自体からはインスタンス作成不可
+    // return this.score >= 80? "Pass" : "Fails";
+  // }
 
   String getScoreString() {
     return this.subject + ", " + this.score + ", " +this.getResult();
@@ -21,13 +21,13 @@ class Score {
 }
 
 
-class MathScore extends Score {     // クラス名 extends 継承元クラス名
+class MathScore extends Score { 
   MathScore (int score) {
     super("Math", score);     // super()    親クラスのコンストラクタを
   }
 
-  @Override     // メソッドのオーバーライド(アノテーション)    小クラス内で親クラスと同じ名前のメソッドを上書きする -> 親クラスよりも優先して判定される
-  protected String getResult() {      // private -> protected   小クラスでgetResult()を上書きしたい
+  @Override
+  protected String getResult() {
     System.out.println("MathScore method");
     return this.score >= 50? "Pass" : "Fails";
   }

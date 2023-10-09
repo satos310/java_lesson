@@ -1,7 +1,13 @@
-// 抽象メソッドを使う   abstract
+// インターフェースを使う
 
-// 抽象メソッドを使用 -> クラスの頭にもabstractをつける
-abstract class Score {
+// interface    抽象メソッドのような効果を、継承関係のない任意のクラスに対しても同じようなことをする
+// ScoreクラスとUserクラスで、処理のログを取る(継承関係なし)
+interface Loggable {      // interfaceの後の変数の名前... 「able」を後ろに付ける(...ができる), 頭文字は大文字
+  void log();     // 抽象メソッドと同じく、実装の中身は価格なくてOK    // void   返り値なし
+}
+
+
+abstract class Score implements Loggable {      // impplemenmts 変数名 -> interfaceのメソッド実装可
   private String subject;
   protected int score;
 
@@ -10,10 +16,7 @@ abstract class Score {
     this.score = score;
   }
   
-  // // abstract(抽象メソッド)   「メソッドを小クラスで必ず実装する」 -> 実装されないとエラーで教えてくれる
   protected abstract String getResult();      // 抽象メソッド...実装がなく不完全 -> このクラス自体からはインスタンス作成不可
-    // return this.score >= 80? "Pass" : "Fails";
-  // }
 
   String getScoreString() {
     return this.subject + ", " + this.score + ", " +this.getResult();
@@ -47,7 +50,7 @@ class EnglishScore extends Score {     // クラス名 extends 継承元クラ�
 }
 
 
-class User {
+class User implements Loggable {
   private String name;
   private Score score;
   User(String name, Score score) {

@@ -1,25 +1,33 @@
-// インターフェースを使う
+// メソッドの実装を進める
+// log()の実装
+// interface -> 任意のクラスに実装を強要できる -> 共同開発時に便利
 
-// interface    抽象メソッドのような効果を、継承関係のない任意のクラスに対しても同じようなことをする
 // ScoreクラスとUserクラスで、処理のログを取る(継承関係なし)
-interface Loggable {      // interfaceの後の変数の名前... 「able」を後ろに付ける(...ができる), 頭文字は大文字
+interface Loggable {
   void log();     // 抽象メソッドと同じく、実装の中身は価格なくてOK    // void   返り値なし
 }
 
 
 abstract class Score implements Loggable {      // impplemenmts 変数名 -> interfaceのメソッド実装可
-  private String subject;
+  protected String subject;
   protected int score;
 
   Score(String subject, int score) {
     this.subject = subject;
     this.score = score;
+    this.log();     // インスタンスが作られた際に呼び出して実行させる
   }
   
   protected abstract String getResult();      // 抽象メソッド...実装がなく不完全 -> このクラス自体からはインスタンス作成不可
 
   String getScoreString() {
     return this.subject + ", " + this.score + ", " +this.getResult();
+  }
+  
+  @Override
+  // interfaceで実装するメソッドのアクセス修飾子 -> 必ずpublic
+  public void log() {
+    System.out.println("Instance reated" + this.subject);     // インスタンス作成 -> メッセージ表示させる,   どのインスタンスか -> subjectフィールド
   }
 }
 
@@ -56,10 +64,16 @@ class User implements Loggable {
   User(String name, Score score) {
     this.name = name;
     this.score = score;
+    this.log();     // インスタンスが作られた際に呼び出して実行させる
   }
 
   String getUserString() {
     return this.name + ", " + this.score.getScoreString();
+  }
+  
+  @Override
+  public void log() {
+    System.out.println("Instance reated" + this.name);     // インスタンス作成 -> メッセージ表示させる,   どのインスタンスか -> nameフィールド
   }
 }
 
